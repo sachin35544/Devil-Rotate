@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Rotate Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        #game-container {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="game-container"></div>
+
+    <script>
+        /* ===============================
+           GLOBAL CONFIG
+        ================================ */
+        const GAME_WIDTH = 600;
+        const GAME_HEIGHT = 600;
+
+        // Theme Colors (Global variable taki UI_Element access kar sake)
+        const THEME = {
+            bg: '#333',
+            wallDark: 0x2e2e2e,
+            wallLight: 0x4a4a4a,
+            wallShadow: 0x1a1a1a
+        };
+
+        let game;
+
+        /* ===============================
+           PHASER INIT
+        ================================ */
+        const config = {
+            type: Phaser.AUTO,
+            width: GAME_WIDTH,
+            height: GAME_HEIGHT,
+            parent: 'game-container',
+            backgroundColor: THEME.bg,
+            scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+            physics: { default: 'arcade', arcade: { gravity: { y: 600 }, debug: false } }
+        };
+
+        game = new Phaser.Game(config);
+
+        function startGame(levelNumber) {
+            window.startLevel(levelNumber);
+        }
+    </script>
+
+    <script src="Levels.js"></script>
+    <script src="UI_Element.js"></script>
+    <script src="Game_Item.js"></script>
+    <script src="Controls.js"></script>
+
+</body>
+
+</html>
